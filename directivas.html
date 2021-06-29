@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="color">
+    <h1 v-bind:style="'background:'+color">
+        Curso Vue
+    </h1>
+    <div v-text="color"></div>
+    <div v-html="color"></div>
+    <template v-if="color=='red'">
+        Color selecionado es Rojo
+    </template>
+    <template v-else>
+        Color selecionado no es Rojo
+    </template>
+    <ul>
+        <li v-for="(fruta,index) in frutas">
+            {{fruta.nombre}} :{{index+1}}
+        </li>
+    </ul>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            color:'red',
+            frutas:[
+                {nombre:'manzana'},
+                {nombre:'pera'},
+                {nombre:'uva'},
+                {nombre:'banana'},
+            ],
+        }
+    });
+</script>
+</body>
+</html>

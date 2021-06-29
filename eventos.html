@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="num1"><br>
+    <input type="text" v-model="num2"><br>
+    <button @click="sumar">Sumar</button><br>
+    <button @dblclick="restar">Restar</button><br>
+    <input type="text" v-model="re"><br>
+    <hr>
+    <form @submit.prevent="agregar()">
+        <input type="text" v-model="nombre" required>
+        <button type="submit">Agregar</button>
+    </form>
+    <ul>
+        <li v-for="persona in personas">{{persona.nombre}}</li>
+    </ul>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            num1:0,
+            num2:0,
+            re:0,
+            nombre:'',
+            personas:[
+                {nombre:'juan'},
+                {nombre:'fabiola'},
+                {nombre:'lorena'},
+                {nombre:'mario'},
+            ]
+        },
+        methods:{
+            sumar(){
+                this.re=parseInt(this.num1)+parseInt(this.num2);
+            },
+            restar(){
+                this.re=parseInt(this.num1)-parseInt(this.num2);
+            },
+            agregar(){
+                this.personas.push({nombre:this.nombre});
+                this.nombre='';
+            }
+        }
+    })
+</script>
+</body>
+</html>
